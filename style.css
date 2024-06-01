@@ -127,7 +127,7 @@ a{
 }
 .video{
     background-color: #fbc4ca;
-    border-radius: 10px;
+    
 }
 .video video{
     max-width: 40%;
@@ -147,12 +147,12 @@ a{
         flex: 1 1 calc(50% - 40px);
     }
     .header {
-        gap: 1.5rem;
+        gap: 1rem;
     
     }
     .header ul{
         display: flex;
-        gap:1rem;
+        gap: 1rem;
     }
 }
 @media (max-width: 480px) {
