@@ -153,6 +153,7 @@ a{
     .header ul{
         display: flex;
         gap: 0.5rem;
+        margin-right: 10px;
     }
 }
 @media (max-width: 480px) {
