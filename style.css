@@ -149,12 +149,15 @@ a{
     .header {
         display: flex;
         justify-content: center;
+        max-width: 100%;
         gap: 0.5rem;
     
     }
     .header ul{
         display: flex;
-        padding-right: 10px;
+        gap: 1rem;
+        
+       
     }
 }
 @media (max-width: 480px) {
