@@ -147,13 +147,14 @@ a{
         flex: 1 1 calc(50% - 40px);
     }
     .header {
+        display: flex;
+        justify-content: center;
         gap: 0.5rem;
     
     }
     .header ul{
         display: flex;
-        gap: 1rem;
-        margin-right: 10px;
+        justify-content:center;
     }
 }
 @media (max-width: 480px) {
