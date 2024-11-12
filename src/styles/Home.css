@@ -1,0 +1,54 @@
+/* Home.css */
+
+.hero {
+    background: linear-gradient(135deg, #f4c2c2, #deaaaa); /* Mantém o gradiente */
+    padding: 80px 20px;
+    text-align: center;
+    color: #fff;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.featured-products {
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+}
+
+.featured-products h2 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+.product-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.product-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    text-align: center;
+    transition: box-shadow 0.3s ease;
+    border-radius: 8px;
+}
+
+.product-card:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}

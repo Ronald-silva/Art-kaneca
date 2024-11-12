@@ -1,0 +1,33 @@
+/* src/pages/Products.css */
+
+.products {
+    background-color: var(--background-color);
+    padding: 20px;
+}
+
+.products h1 {
+    color: var(--secondary-color);
+}
+
+.products {
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+    min-height: 80vh;
+}
+
+.products h1 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #e76f51;
+}
+
+.product-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}

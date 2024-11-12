@@ -1,3 +1,30 @@
+/* src/styles/App.css ou global.css */
+
+:root {
+  --primary-color: #f4c2c2; /* Rosa semelhante ao fundo do logotipo */
+  --secondary-color: #6b4a42; /* Marrom semelhante ao texto do logotipo */
+  --text-color: #4a4a4a; /* Cor do texto, um tom mais escuro para legibilidade */
+  --background-color: #ffffff; /* Cor de fundo branca ou neutra */
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: 'Arial', sans-serif; /* Ajuste a fonte conforme o estilo do site */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--secondary-color);
+}
+
+a {
+  color: var(--primary-color);
+}
+
+a:hover {
+  color: var(--secondary-color);
+}
+
 .App {
   text-align: center;
 }

@@ -1,0 +1,25 @@
+.cart-summary {
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.cart-summary h2 {
+    margin-bottom: 15px;
+}
+
+.cart-summary ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.cart-summary ul li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.cart-summary h3 {
+    text-align: right;
+    margin-top: 15px;
+}
