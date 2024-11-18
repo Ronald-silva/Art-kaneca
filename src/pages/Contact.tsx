@@ -123,7 +123,7 @@ const Contact = () => {
                 <h3 className="font-medium text-secondary mb-4">Redes Sociais</h3>
                 <div className="flex gap-4">
                   <a
-                    href="https://www.instagram.com/art.kaneca?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                    href="https://www.instagram.com/art.kaneca/"
                     className="bg-primary text-secondary p-2 rounded-full hover:bg-primary/90 transition-colors"
                   >
                     <Instagram className="h-5 w-5" />

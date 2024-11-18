@@ -12,30 +12,30 @@ const Products = () => {
     {
       id: 1,
       name: "Caneca Personalizada",
-      description: "Caneca de cerâmica com sua foto ou design favorito",
+      description: "Caneca de cerâmica para sua arte ou mensagem",
       price: 39.90,
-      image: "/placeholder.svg"
+      image: "/images/products/standard-mug.png"
     },
     {
       id: 2,
       name: "Caneca Mágica",
-      description: "Revela a imagem com bebida quente",
+      description: "Revela sua arte com bebida quente",
       price: 49.90,
-      image: "/placeholder.svg"
+      image: "/images/products/magic-mug.png"
     },
     {
       id: 3,
-      name: "Caneca com Nome",
-      description: "Personalização com nome e mensagem especial",
+      name: "Caneca com Frase",
+      description: "Ideal para presentear com mensagem especial",
       price: 34.90,
-      image: "/placeholder.svg"
+      image: "/images/products/custom-mug.png"
     },
     {
       id: 4,
       name: "Kit Presente",
-      description: "Caneca personalizada com caixa decorativa",
+      description: "Caneca personalizada com embalagem decorativa",
       price: 59.90,
-      image: "/placeholder.svg"
+      image: "/images/products/gift-box.png"
     }
   ];
 
@@ -50,7 +50,6 @@ const Products = () => {
   return (
     <div className="min-h-screen pt-20 pb-10 bg-background">
       <div className="container mx-auto px-4">
-        {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-playfair font-bold text-secondary mb-4">
             Nossos Produtos
@@ -60,7 +59,6 @@ const Products = () => {
           </p>
         </div>
 
-        {/* Products Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {products.map((product) => (
             <div
@@ -69,7 +67,7 @@ const Products = () => {
             >
               <div className="aspect-square relative">
                 <img
-                  src='/personalizada.png'
+                  src={product.image}
                   alt={product.name}
                   className="w-full h-full object-cover"
                 />
@@ -98,7 +96,6 @@ const Products = () => {
           ))}
         </div>
 
-        {/* CTA Section */}
         <div className="mt-16 text-center">
           <Link
             to="/customize"

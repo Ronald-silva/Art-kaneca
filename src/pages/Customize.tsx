@@ -1,6 +1,7 @@
 // src/pages/Customize.tsx
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import { useToast } from "../components/ui/use-toast";
+import { useCart } from "../contexts/CartContext";
 import { Button } from "../components/ui/button";
 import { Textarea } from "../components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "../components/ui/radio-group";
@@ -27,34 +28,87 @@ interface Position {
 
 type ProductType = 'mug' | 'glass' | 'tile';
 
-const PRODUCT_TYPES: Record<ProductType, { name: string; price: number }> = {
-  mug: { name: "Caneca", price: 39.90 },
-  glass: { name: "Copo", price: 34.90 },
-  tile: { name: "Azulejo", price: 29.90 }
+// Constantes para imagens dos produtos
+const PRODUCT_IMAGES = {
+  mug: {
+    standard: "/products/standard-mug.png",
+    magic: "/products/magic-mug.png",
+    custom: "/products/custom-mug.png",
+  },
+  glass: "/products/standard-glass.png",
+  tile: "/products/standard-tile.png",
+} as const;
+
+const PRODUCT_TYPES: Record<ProductType, { 
+  name: string; 
+  price: number;
+  description: string;
+  defaultImage: string;
+}> = {
+  mug: { 
+    name: "Caneca", 
+    price: 39.90,
+    description: "Personalização em cerâmica de alta qualidade",
+    defaultImage: PRODUCT_IMAGES.mug.standard
+  },
+  glass: { 
+    name: "Copo", 
+    price: 34.90,
+    description: "Copo térmico com sua arte exclusiva",
+    defaultImage: PRODUCT_IMAGES.glass
+  },
+  tile: { 
+    name: "Azulejo", 
+    price: 29.90,
+    description: "Azulejo decorativo personalizado",
+    defaultImage: PRODUCT_IMAGES.tile
+  }
 };
 
 const Customize = () => {
   const { toast } = useToast();
+  const { addItem } = useCart();
   const [selectedProduct, setSelectedProduct] = useState<ProductType>("mug");
   const [customText, setCustomText] = useState<string>("");
   const [textColor, setTextColor] = useState<string>("#000000");
   const [fontSize, setFontSize] = useState<number>(24);
   const [textRotation, setTextRotation] = useState<number>(0);
-  const [previewUrl, setPreviewUrl] = useState<string>("/placeholder.svg");
+  const [previewUrl, setPreviewUrl] = useState<string>(PRODUCT_TYPES.mug.defaultImage);
   const [position, setPosition] = useState<Position>({ x: 50, y: 50 });
   const [isDragging, setIsDragging] = useState(false);
   const [dragMode, setDragMode] = useState<"move" | "rotate">("move");
+  const [uploadedImage, setUploadedImage] = useState<string | null>(null);
 
   const handleImageUpload = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
       const imageUrl = URL.createObjectURL(file);
-      setPreviewUrl(imageUrl);
+      setUploadedImage(imageUrl);
     }
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    
+    // Criar objeto do produto personalizado
+    const customProduct = {
+      id: Date.now(), // Identificador único
+      name: `${PRODUCT_TYPES[selectedProduct].name} Personalizada`,
+      price: PRODUCT_TYPES[selectedProduct].price,
+      image: previewUrl,
+      customization: {
+        text: customText,
+        textColor,
+        fontSize,
+        textRotation,
+        position,
+        uploadedImage
+      }
+    };
+
+    // Adicionar ao carrinho
+    addItem(customProduct);
+
     toast({
       title: "Produto adicionado ao carrinho!",
       description: `${PRODUCT_TYPES[selectedProduct].name} personalizado(a) foi adicionado(a) ao carrinho.`,
@@ -101,7 +155,13 @@ const Customize = () => {
   };
 
   const handleProductChange = (value: string) => {
-    setSelectedProduct(value as ProductType);
+    const productType = value as ProductType;
+    setSelectedProduct(productType);
+    setPreviewUrl(PRODUCT_TYPES[productType].defaultImage);
+    // Reset customization when changing product
+    setPosition({ x: 50, y: 50 });
+    setTextRotation(0);
+    setUploadedImage(null);
   };
 
   return (
@@ -121,7 +181,7 @@ const Customize = () => {
           <Card className="p-6">
             <div className="space-y-4">
               <div 
-                className="aspect-square rounded-lg overflow-hidden bg-white shadow-inner relative"
+                className="aspect-square rounded-lg overflow-hidden bg-white shadow-inner relative cursor-grab active:cursor-grabbing"
                 onMouseDown={handleDragStart}
                 onMouseUp={handleDragEnd}
                 onMouseLeave={handleDragEnd}
@@ -133,7 +193,7 @@ const Customize = () => {
                   textPosition={position}
                   textColor={textColor}
                   textRotation={textRotation}
-                  imageUrl={previewUrl !== "/placeholder.svg" ? previewUrl : undefined}
+                  imageUrl={uploadedImage || previewUrl}
                 />
               </div>
 
@@ -210,6 +270,11 @@ const Customize = () => {
                         htmlFor={type}
                         className="flex flex-col items-center justify-between rounded-lg border-2 border-muted bg-white p-4 hover:bg-gray-50 peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
                       >
+                        <img
+                          src={info.defaultImage}
+                          alt={info.name}
+                          className="w-16 h-16 object-contain mb-2"
+                        />
                         <span>{info.name}</span>
                         <span className="text-sm text-textColor/70">
                           R$ {info.price.toFixed(2)}
@@ -288,6 +353,23 @@ const Customize = () => {
                         onChange={handleImageUpload}
                       />
                     </div>
+                    {uploadedImage && (
+                      <div className="mt-2">
+                        <img
+                          src={uploadedImage}
+                          alt="Preview da imagem carregada"
+                          className="w-32 h-32 object-contain border rounded-lg"
+                        />
+                        <Button
+                          type="button"
+                          variant="outline"
+                           className="mt-2 py-1 px-2 text-sm"
+                          onClick={() => setUploadedImage(null)}
+                        >
+                          Remover Imagem
+                        </Button>
+                      </div>
+                    )}
                   </div>
                 </TabsContent>
               </Tabs>
