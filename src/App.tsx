@@ -15,7 +15,7 @@ import Products from "./pages/Products";
 import Customize from "./pages/Customize";
 import Contact from "./pages/Contact";
 import Cart from "./pages/Cart";
-import Checkout from "./pages/Checkout"; // Adicionado o import
+import Checkout from "./pages/Checkout"; 
 
 const queryClient = new QueryClient();
 

@@ -12,7 +12,6 @@ import {
   Mail,
   Clock,
   Instagram,
-  Facebook,
   Send
 } from "lucide-react";
 
