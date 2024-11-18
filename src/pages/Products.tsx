@@ -19,7 +19,7 @@ const Products = () => {
     {
       id: 2,
       name: "Caneca Mágica",
-      description: "Revela sua arte com bebida quente",
+      description: "Revela a arte de sua caneca com bebida quente",
       price: 49.90,
       image: "/images/products/magic-mug.png"
     },
