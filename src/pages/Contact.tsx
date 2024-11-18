@@ -81,11 +81,11 @@ const Contact = () => {
                   <div>
                     <h3 className="font-medium text-secondary">Endereço</h3>
                     <p className="text-textColor/70">
-                      Rua das Flores, 123
+                      Rua Guilherme Perdigao, 391
                       <br />
-                      Centro, Cidade - Estado
+                      Parangaba, Fortaleza - CE
                       <br />
-                      CEP: 12345-678
+                      CEP: 60720-420
                     </p>
                   </div>
                 </div>
@@ -94,7 +94,7 @@ const Contact = () => {
                   <Phone className="h-6 w-6 text-primary shrink-0 mt-1" />
                   <div>
                     <h3 className="font-medium text-secondary">Telefone</h3>
-                    <p className="text-textColor/70">(11) 99999-9999</p>
+                    <p className="text-textColor/70">(85) 98630-2707</p>
                   </div>
                 </div>
 
@@ -124,17 +124,12 @@ const Contact = () => {
                 <h3 className="font-medium text-secondary mb-4">Redes Sociais</h3>
                 <div className="flex gap-4">
                   <a
-                    href="#"
+                    href="https://www.instagram.com/art.kaneca?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                     className="bg-primary text-secondary p-2 rounded-full hover:bg-primary/90 transition-colors"
                   >
                     <Instagram className="h-5 w-5" />
                   </a>
-                  <a
-                    href="#"
-                    className="bg-primary text-secondary p-2 rounded-full hover:bg-primary/90 transition-colors"
-                  >
-                    <Facebook className="h-5 w-5" />
-                  </a>
+                 
                 </div>
               </div>
             </Card>
@@ -210,11 +205,15 @@ const Contact = () => {
             <h2 className="text-2xl font-semibold text-secondary mb-6">
               Nossa Localização
             </h2>
-            <div className="aspect-video w-full bg-gray-200 rounded-lg">
-              {/* Aqui você pode adicionar um iframe do Google Maps */}
-              <div className="w-full h-full flex items-center justify-center text-textColor/70">
-                Mapa será carregado aqui
-              </div>
+            <div className="aspect-video w-full rounded-lg overflow-hidden">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3981.1595804123813!2d-38.57628302625125!3d-3
+                .7754094434105214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7c74c1c72678e05%3A0x5a99fb0306478875!2sR.%20Guilherme%20Perdig%C3%A3o%2C%20391%20-%20Parangaba%2C%20Fortaleza%20-%20CE%2C%2060720-420!5e0!3m2!1spt-BR!2sbr!4v1731935960979!5m2!1spt-BR!2sbr" 
+                className="w-full h-full border-0"
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </div>
           </Card>
         </div>

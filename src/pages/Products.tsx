@@ -69,7 +69,7 @@ const Products = () => {
             >
               <div className="aspect-square relative">
                 <img
-                  src={product.image}
+                  src='/personalizada.png'
                   alt={product.name}
                   className="w-full h-full object-cover"
                 />
